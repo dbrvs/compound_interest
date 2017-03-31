@@ -1,9 +1,8 @@
-function [RHOh,RHOp]=SLAV_uncertainty(numpatient,pot,tf)
+function [RHOh,RHOp]=global_sensitivity(numpatient,pot,tf)
 % integrate the stochastic SLAV differential equations with LHS sampling
 % DBR 4/16
 
 %numpatient = 100; % number of patients
-
 
 %variables to allow to be variable, some need to over multi logs
 
