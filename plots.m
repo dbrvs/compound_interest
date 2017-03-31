@@ -10,12 +10,10 @@ aL  = 0.015;  %growth rate latent cells [1/day]
 xi  = 5.7e-5; %reactivation rate in Luo patient specific 2e-6->1e-3
 thL = -5.2e-4; %net clearance rate
 
-dL = aL-thL-xi; 
+dL = aL-thL-xi; %calculate the death rate
 
-thL=aL-dL-xi;
 tt=linspace(0,100,1e3); %timeseries in years
 t=tt.*365; %convert to days
-
 figuresize(3,3,'inches')
 
 Hc = ones(length(t),1)*100; %Hill cure in half threshold
@@ -44,13 +42,10 @@ hold off
 %cs = findall(gcf); for k = 1:numel(cs); try set(cs(k), 'FontSize',14); end; end
 print('PIC_onetime','-dpdf','-r600')
 
-
 %% Figure 2b -- lines comparison
 
 % continuous time therapy affects theta_L
 figuresize(5,5,'inches')
-
-
 thL_c = [thL thL*1.5 thL*3 thL*10];
 L_c = 1e6*exp([thL_c(1)*t; thL_c(2)*t; thL_c(3)*t; thL_c(4)*t]);
 %subplot(122)
